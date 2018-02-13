@@ -1,0 +1,55 @@
+---
+title: "Milestone 1 - Unintended Consequences of Controlled Substance Policies"
+author: "Martha Wetzel martha.wetzel@emory.edu"
+date: "2/11/2018"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Overview and Background
+Over the first decade of the 2000s, prescription opioid use and overdose deaths quadrupled. Drug overdose deaths, largely related to opioid use, are now a more common cause of accidental death than car accidents. In response to the opioid epidemic, policy makers have implemented a variety of measures to contain prescription opioid use. Every state, with the exception of Missouri, has implemented a prescription drug monitoring database (PDMP), which is a database that tracks prescriptions of controlled substances, allowing for monitoring of both doctors and patients. Recent evidence has shown the PDMPs to be effective at reducing opioid prescriptions and overdose deaths. However, reporters and patient advocates have suggested that these policies may come with the unintended consequence of preventing patients from acquiring indicated opioids for appropriate medical use. My own research, based on the National Health Interview Survey (NHIS), has shown that the implementation of PDMP policy appears to lead to increases in days of missed work and bed days among people who have experienced an injury or surgery. 
+
+Parallel to the implementation of PDMPs, many states implemented medical marijuana laws. The driving argument behind medical marijuana laws is that marijuana is an effective analgesic. Early evidence has shown a possible relationship between medical marijuana legalization and decreased opioid overdoses. However, research on intersection of PDMP and marijuana laws remains in a very early stage.
+
+Thus, the primary objective of this project is to validate my NHIS findings related to PDMPs and disability using different data/metrics. Secondary objectives are to examine other potential effects of both PDMP and medical marijuana policies on high risk behavior (including injection drug use), life satisfaction, and sleeplessness.
+
+# Data  
+## Data Source
+The data source is the [Behavioral Risk Factor Surveillance System](https://www.cdc.gov/brfss/data_documentation/index.htm) (BRFSS) survey, collected by and available from the Centers for Disease Control and Prevention (CDC). I will use survey data from 2000-2016, a time period during which there was intense policy activity on both PDMPs and medical marijuana laws. The survey is conducted via telephone at the state level according to CMS protocol, with a goal to collect at least 4,000 survey responses in all states.  
+
+## Data Wrangling
+The data preparation process for this project will require substantial effort. I will need to download, extract, and concatenate 11 years of data. While the variable names and properties should be theoretically consistent from year-to-year, experience with other CMS surveys has shown that there may be some inconsistencies. The survey questions will need to be cleaned to remove values that indicate a skip or no response, and a number of variables will need to be recoded for purposes of modeling. 
+
+# Methods
+This is a quasi-experimental analysis that will exploit the variation in year of policy implementation. The primary focal dependent variables are:  
+  
+* During the past 30 days, for about how many days did poor physical or mental health keep you from doing your usual activities, such as self-care, work, or recreation?  
+* Now thinking about your physical health, which includes physical illness and injury, for how many days during the past 30 days was your physical health not good?    
+
+## Exploratory Analyses
+The first step of this analysis will be to graph the average number of days of usual activity and poor health on a yearly basis, relative to the implementation of a PDMP policy. These graphs will be similar to the graph below.  
+
+![](/Users/marthawetzel/Desktop/Emory/04_Spring 2018/NRSG 741/Final Project/Milestone 1/Sample Graph.png)
+
+In addition, I will run descriptive statistics and explore the distribution of the response variables of interest.
+
+## Analysis
+
+Similar to my prior work, I will use a generalized difference-in-difference approach with state and year fixed effects. Usual activity and poor health have response values from 1 - 30. I will evaluate the distribution of the response values to determine the appropriate statistical model. I anticipate that given the truncated data and the high prevalence of zeroes, the distribution will call for a negative binomial regression. I will include a number of covariates in the model, such as cell phone (versus landline) survey response, health insurance, general health status, socio-economic status (measured by income), smoking status, and age.
+
+# Timeline
+The timeline for this project is shown below. 
+  
+1. Pull data: 02/23/18  
+2. Create clean analytic data set: 03/16/18  
+3. Submit Milestone 2: 03/28/18  
+4. Run models: 04/13/18  
+5. Final presentation/paper: 05/02/18  
+
+
