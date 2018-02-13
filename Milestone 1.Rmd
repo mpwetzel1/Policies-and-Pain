@@ -52,4 +52,8 @@ The timeline for this project is shown below.
 4. Run models: 04/13/18  
 5. Final presentation/paper: 05/02/18  
 
+# External Links  
+* [R Markdown file used to create Milestone 1 document](https://github.com/mpwetzel1/Policies-and-Pain)  
+* [Data source](https://www.cdc.gov/brfss/data_documentation/index.htm) 
+
 
