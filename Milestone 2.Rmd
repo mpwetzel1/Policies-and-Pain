@@ -1,0 +1,92 @@
+---
+title: "Milestone 2"
+author: "Martha Wetzel"
+date: "3/26/2018"
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(foreign) 
+library(tidyverse)
+library(haven)
+library("sas7bdat")
+
+setwd("/Users/marthawetzel/Desktop/Emory/04_Spring 2018/NRSG 741/Final Project/Policies-and-Pain")
+```
+
+# Overview
+For this assignment, I downloaded and cleaned five years of data from the Behavioral Risk Factor Surveillance System (BRFSS) survey. The data was downloaded from the following locations:  
+
+*[2015](https://www.cdc.gov/brfss/annual_data/2015/files/LLCP2015XPT.zip)  
+*[2014](https://www.cdc.gov/brfss/annual_data/2014/files/LLCP2014XPT.zip)  
+*[2013](https://www.cdc.gov/brfss/annual_data/2013/files/LLCP2013XPT.zip)  
+*[2012](https://www.cdc.gov/brfss/annual_data/2012/files/LLCP2012XPT.zip)  
+*[2011](https://www.cdc.gov/brfss/annual_data/2011/files/LLCP2011XPT.zip)  
+
+Code for this project can be found on [GitHub](https://github.com/mpwetzel1/Policies-and-Pain).
+
+# Data Cleaning
+The variables kept for the analysis are shown below in Table 1. Variables that had different names in different years were cleaned and standardized.
+
+```{R}
+VarsByYear <- read_csv("/Users/marthawetzel/Desktop/Emory/04_Spring 2018/NRSG 741/Final Project/Variables By Year_2010-2015.csv")
+VarsByYear
+```
+After careful review of the data dictionaries, it became clear that several of my secondary analyses would not be possible. In particular, it will not be possible to examine HIV risk behavior or sleeplessness. In the case of HIV risk behavior, the question was not asked consistently and the wording was changed substantially between years, making the responses incomparable. For sleeplessness, the question was not consistently.
+
+## Workflow
+The following broad steps were performed in the data import/cleaning process:  
+
+1. Survey data acquisition  
+    + Download data dictionary  
+    + Download and unzip data files  
+    + Import the SAS Transport formatted files  
+    + Clear the raw files to reduce harddrive space (raw files took up a gigabyte each)  
+    + Verify that file included the correct year(s)  
+2. Law data set  
+    + I had previously compiled a data set showing the implementation dates of PDMP and marijuana laws at the state level  
+    + Imported the SAS file containing the laws   
+    + Corrected the dates to have the R origin point instead of the SAS origin point  
+3. Combine data  
+    + Stack years of BRFSS data  
+    + Verify that the numbers of observations per year were similar  
+    + Inner joing the BRFSS and law data on state and year  
+4. Prepare the focal predictors for analysis  
+    + Create an approximate interview data based on month and year that interview was conducted  
+    + Create flags indicating if the individual lived in a state that had an active policy at the time of the interview  
+5. Prepare the covariates and dependent variables for analysis  
+    + Standardize variables that had different names or slightly different response options in different survey years  
+    + Create binary variables to use in models.  
+  
+# Data Exploration
+The purpose of the data exploration was to ensure that data matched expectations and review the distribution of continuous variables.
+
+## Data Checks
+
+### Mandatory PDMP Distribution
+
+Interviews Conducted when Mandatory PDMP in Place, By State
+```{R} 
+table(ByStYear$statename, ByStYear$PostMandPDMP, exclude=NULL)
+```
+
+## Outcome Distributions
+
+
+
+# Descriptive Statistics
+
+# Final Analysis
+
+
+
+### Assignment Directions
+A working prototype of your project is due on Wednesday 15 March by 5:00 pm EDT. You will submit a PDF file. This document will contain two links; 1. a link to the Rmd file that created it in your GitHub repo, and 2. a link to the source of your original data. Please put your name on the first page of the document.
+
+For this milestone we expect that you will have acquired, cleaned, and explored your dataset. You will document these activities in your files. You will also explain in detail the components of your final analysis. If you have deviated from your original plans, please describe what is different and the reasons that have led to this. You will explain your workflow, that is, how you went from acquiring your data to getting (close to) an answer to your question. Are there ancillary questions that have arisen as you have gone through this process? What are they?
+
+
+

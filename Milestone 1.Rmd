@@ -3,9 +3,9 @@ title: "Milestone 1 - Unintended Consequences of Controlled Substance Policies"
 author: "Martha Wetzel martha.wetzel@emory.edu"
 date: "2/11/2018"
 output:
-  html_document: default
-  pdf_document: default
   word_document: default
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
